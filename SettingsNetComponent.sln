@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsNetComponent", "Set
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsStorage", "SettingsStorage\SettingsStorage.csproj", "{0BA9204B-714F-45F3-AC2A-E3F87E2E7DD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomeClient", "SomeClient\SomeClient.csproj", "{2D66CDFD-5BD6-4661-996F-C3AD0D6AE2F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0BA9204B-714F-45F3-AC2A-E3F87E2E7DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA9204B-714F-45F3-AC2A-E3F87E2E7DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA9204B-714F-45F3-AC2A-E3F87E2E7DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D66CDFD-5BD6-4661-996F-C3AD0D6AE2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D66CDFD-5BD6-4661-996F-C3AD0D6AE2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D66CDFD-5BD6-4661-996F-C3AD0D6AE2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D66CDFD-5BD6-4661-996F-C3AD0D6AE2F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
