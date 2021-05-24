@@ -57,7 +57,6 @@
     <Compile Include="Settings\Providers\ShareFileJsonProvider.cs" />
     <Compile Include="Settings\Providers\IJsonProvider.cs" />
     <Compile Include="Settings\Providers\NetTcpJsonProvider.cs" />
-    <Compile Include="Settings\Providers\SrtreamReader.cs" />
     <Compile Include="Settings\Providers\TftpJsonProvider.cs" />
     <Compile Include="Settings\SettingsProvider.cs" />
     <Compile Include="SystemInformation\ISystemInfo.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="WCF\TcpBindingFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Readme.md" />
   </ItemGroup>
