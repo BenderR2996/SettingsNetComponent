@@ -18,7 +18,7 @@ namespace SettingsStorage.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // добавляем композитный ключ для однозначной идентификации приложений и хостов
-            modelBuilder.Entity<AppSettingsRecord>().HasKey(asr => new { asr.Id, asr.Mac});
+            //modelBuilder.Entity<AppSettingsRecord>().HasKey(asr => new { asr.Id, asr.Mac});
         }
     }
 }

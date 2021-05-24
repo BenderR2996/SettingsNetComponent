@@ -1,4 +1,6 @@
-﻿namespace SettingsNetComponent
+﻿using System;
+
+namespace SettingsNetComponent
 {
     /// <summary>
     /// Поставщик настроек в формате Json
@@ -8,7 +10,7 @@
         /// <summary>
         /// Идентификатор приложения на клиентской машине
         /// </summary>
-        AppIdentifier AppId { get; }
+        Guid AppId { get; }
         /// <summary>
         /// Загрузить настройки приложения в формате Json
         /// </summary>

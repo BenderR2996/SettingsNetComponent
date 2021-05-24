@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace SettingsNetComponent
 {
@@ -9,7 +10,7 @@ namespace SettingsNetComponent
     public class FileJsonProvider : IJsonProvider
     {
         private readonly string path = "settings.json";       
-        public AppIdentifier AppId { get; set; }
+        public Guid AppId { get; set; }
         public string LoadJson()
         {
             return File.ReadAllText(path);

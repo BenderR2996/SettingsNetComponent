@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SettingsNetComponent;
 using SettingsStorage.Model;
+using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
@@ -39,12 +40,12 @@ namespace SettingsStorage.WCF
         /// </summary>
         /// <param name="appId"></param>
         /// <returns></returns>
-        public AppSettingsRecord LoadSettings(AppIdentifier appId)
+        public AppSettingsRecord LoadSettings(Guid appId)
         {
             using (var ctx = new AppDbContext())
             {
                 ctx.AppSettings.Load();
-                var record = ctx.AppSettings.Find(appId.GetKey());
+                var record = ctx.AppSettings.Find(appId);
                 if (record != null)
                     return record;
             }
@@ -58,7 +59,7 @@ namespace SettingsStorage.WCF
         {
             using (var ctx = new AppDbContext())
             {
-                var record = ctx.AppSettings.Find(appSettings.AppId.GetKey());
+                var record = ctx.AppSettings.Find(appSettings.Id);
                 if (record != null) // если запись найдена - обновить значения
                 {
                     record.JsonData = appSettings.JsonData;

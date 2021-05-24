@@ -35,7 +35,7 @@ namespace SettingsNetComponent
         /// </summary>
         /// <param name="appId"></param>
         /// <returns></returns>
-        public AppSettingsRecord LoadSettings(AppIdentifier appId)
+        public AppSettingsRecord LoadSettings(Guid appId)
         {
             return channel?.LoadSettings(appId) ?? null;
         }

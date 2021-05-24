@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SettingsStorage.Migrations
 {
@@ -10,13 +11,12 @@ namespace SettingsStorage.Migrations
                 name: "AppSettings",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Mac = table.Column<string>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     JsonData = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppSettings", x => new { x.Id, x.Mac });
+                    table.PrimaryKey("PK_AppSettings", x => x.Id);
                 });
         }
 

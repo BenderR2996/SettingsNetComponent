@@ -15,7 +15,7 @@ namespace SettingsNetComponent
     /// <inheritdoc/>
     public class NetTcpJsonProvider : IJsonProvider
     {
-        public AppIdentifier AppId { get; private set; }
+        public Guid AppId { get; private set; }
         /// <summary>
         /// Адрес сервера
         /// </summary>
@@ -29,7 +29,7 @@ namespace SettingsNetComponent
         /// </summary>
         /// <param name="appId">Идентификатор приложения</param>
         /// <param name="address">Uri вида net.tcp://<ip>:<port>/<serviceName></param>
-        public NetTcpJsonProvider(AppIdentifier appId, Uri address)
+        public NetTcpJsonProvider(Guid appId, Uri address)
         {
             AppId = appId;
             Address = address;
@@ -42,53 +42,8 @@ namespace SettingsNetComponent
         /// <param name="serverIP">ip-адрес сервера</param>
         /// <param name="serverPort">порт</param>
         /// <param name="serviceName">название сервиса</param>
-        public NetTcpJsonProvider(AppIdentifier appId, IPAddress serverIP, uint serverPort, string serviceName)
+        public NetTcpJsonProvider(Guid appId, IPAddress serverIP, uint serverPort, string serviceName)
             : this(appId, new Uri($"net.tcp://{serverIP}:{serverPort}/{serviceName}")) { }
-
-        /// <summary>
-        /// Сопоставляет Mac-адрес одного из сетевых интерфейсов на клиентской машине именно с тем Mac-адресом, 
-        /// с которым ассоциирован Ip-адрес вызова на серверное приложение
-        /// </summary>
-        /// <remarks>
-        /// Этот метод нужен для хостов имеющих более одного сетевого интерфейса.
-        /// </remarks>
-        /// <param name="sc">Ссылка на запущенный сервис</param>
-        /// <returns>
-        /// Возвращает Mac-адресс сетевого интерфейса. Если подключение к сети отсустсвует, возвратит первый из списка.
-        /// </returns>
-        private string GetMyMac(ServiceClient sc)
-        {
-            string GetDefaultMac() => (new SystemInfo()).GetIPMacPairs().First().MacAddress;
-            try
-            {
-                var ip = sc.GetIpAddress();
-                var mac = (new SystemInfo()).GetMacByIp(ip);
-                if (!string.IsNullOrEmpty(mac))
-                    return mac;
-            }
-            catch
-            {
-                return GetDefaultMac();
-            }
-            return GetDefaultMac();
-        }
-
-        /// <summary>
-        /// Ассоциирует приложение и Mac-адрес (однократно)
-        /// </summary>
-        /// <remarks>нужно для однозначной идентификации одинаковых приложений на разных узлах одной сети</remarks>
-        /// <param name="sc"></param>
-        private void AssociateToMac(ServiceClient sc)
-        {
-            if (string.IsNullOrEmpty(AppId.Mac))
-            {
-                var mac = GetMyMac(sc);
-                if (!mac.Equals("Not connected!"))
-                {
-                    AppId.Mac = mac;
-                }
-            }
-        }
 
         public string LoadJson()
         {
@@ -98,7 +53,6 @@ namespace SettingsNetComponent
                 {
                     if (sc.Connect())
                     {
-                        AssociateToMac(sc);
                         return sc.LoadSettings(AppId).JsonData;
                     }
                     else
@@ -122,8 +76,7 @@ namespace SettingsNetComponent
                 {
                     if (sc.Connect())
                     {
-                        AssociateToMac(sc);
-                        AppSettingsRecord record = new AppSettingsRecord() { AppId = this.AppId, JsonData = json };
+                        AppSettingsRecord record = new AppSettingsRecord() { Id = this.AppId, JsonData = json };
                         sc.SaveSettings(record);
                     }
                     else

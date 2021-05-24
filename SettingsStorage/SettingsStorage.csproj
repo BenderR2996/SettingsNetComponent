@@ -174,9 +174,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\20210524020533_Initial.cs" />
-    <Compile Include="Migrations\20210524020533_Initial.designer.cs">
-      <DependentUpon>20210524020533_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20210524030207_Initial.cs" />
+    <Compile Include="Migrations\20210524030207_Initial.designer.cs">
+      <DependentUpon>20210524030207_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="RelayCommand.cs" />
