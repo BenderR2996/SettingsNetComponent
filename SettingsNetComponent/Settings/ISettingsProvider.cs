@@ -3,18 +3,18 @@
     /// <summary>
     /// Провайдер настроек
     /// </summary>
-    /// <typeparam name="S"></typeparam>
-    public interface ISettingsProvider<S> where S : class//, new()
+    /// <typeparam name="T"></typeparam>
+    public interface ISettingsProvider<T> where T : class//, new()
     {
         /// <summary>
         /// Загрузить настройки
         /// </summary>
         /// <returns></returns>
-        S Load();
+        T Load();
         /// <summary>
         /// Сохранить настройки
         /// </summary>
         /// <param name="settingsClass"></param>
-        void Save(S settingsClass);
+        void Save(T settingsClass);
     }
 }
