@@ -30,7 +30,7 @@ namespace SomeClient
             return Guid.Parse(File.ReadAllText(GuidFile));
         }
 
-        public LocalAppSettings AppSettings { get; set; } = new LocalAppSettings();
+        public LocalAppSettings AppSettings { get; set; }
         ISettingsProvider<LocalAppSettings> SettingsProvider { get; set; }
 
 
@@ -42,12 +42,18 @@ namespace SomeClient
             this.DataContext = AppSettings;
             this.Title = Assembly.GetExecutingAssembly().GetName().Name;
 
-            SettingsProvider = new SettingsProvider<LocalAppSettings>(
+            SettingsProvider =
+
+            new SettingsProvider<LocalAppSettings>(
                 new NetTcpJsonProvider(
                         LoadGuid(),
                         new Uri($@"net.tcp://192.168.221.198:15001/SettingsService")
                     )
                 );
+            // 
+            // new SettingsProvider<LocalAppSettings>(new ShareFileJsonProvider(LoadGuid(), new DirectoryInfo(@"D:\123")));
+       
+
 
         }
 
@@ -59,7 +65,8 @@ namespace SomeClient
 
         private void ButtonSaveSettings(object sender, RoutedEventArgs e)
         {
-            SettingsProvider.Save(AppSettings);
+            if (AppSettings != null)
+                SettingsProvider.Save(AppSettings);
         }
     }
 }

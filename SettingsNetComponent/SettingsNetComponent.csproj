@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AppSettingsRecord.cs" />
     <Compile Include="Settings\ISettingsProvider.cs" />
-    <Compile Include="Settings\Providers\FileJsonProvider.cs" />
+    <Compile Include="Settings\Providers\ShareFileJsonProvider.cs" />
     <Compile Include="Settings\Providers\IJsonProvider.cs" />
     <Compile Include="Settings\Providers\NetTcpJsonProvider.cs" />
     <Compile Include="Settings\SettingsProvider.cs" />
