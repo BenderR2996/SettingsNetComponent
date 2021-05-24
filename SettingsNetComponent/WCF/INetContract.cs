@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 
 namespace SettingsNetComponent
 {
@@ -23,7 +24,7 @@ namespace SettingsNetComponent
         /// <param name="appId">Идентификатор (приложение/хост)</param>
         /// <returns>Возвращает экземпляр объекта AppSettingsRecord</returns>
         [OperationContract(IsOneWay = false)]
-        AppSettingsRecord LoadSettings(AppIdentifier appId);
+        AppSettingsRecord LoadSettings(Guid appId);
         /// <summary>
         /// Возвращает Ip-адрес клиента, с которым было установлено соединение.
         /// </summary>
