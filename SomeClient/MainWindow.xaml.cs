@@ -44,16 +44,16 @@ namespace SomeClient
 
             SettingsProvider =
 
-            new SettingsProvider<LocalAppSettings>(
-                new NetTcpJsonProvider(
-                        LoadGuid(),
-                        new Uri($@"net.tcp://192.168.221.198:15001/SettingsService")
-                    )
-                );
+            //new SettingsProvider<LocalAppSettings>(
+            //    new NetTcpJsonProvider(
+            //            LoadGuid(),
+            //            new Uri($@"net.tcp://192.168.221.198:15001/SettingsService")
+            //        )
+            //    );
             // 
             // new SettingsProvider<LocalAppSettings>(new ShareFileJsonProvider(LoadGuid(), new DirectoryInfo(@"D:\123")));
-       
 
+            new SettingsProvider<LocalAppSettings>(new TftpJsonProvider(LoadGuid(), System.Net.IPAddress.Parse("127.0.0.1")));
 
         }
 
